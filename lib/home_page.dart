@@ -144,18 +144,21 @@ class _HomePageState extends State<HomePage> {
       );
 //Maximum and Minimum temp
   Widget get max_minTempToday {
+    const fontSizeMaxMinTemp = 16.0;
     return Row(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("21 C", style: _defaultTextStyle(fontSize_: 16)),
+        Text("${todayWeather?.tempMax?.celsius}C",
+            style: _defaultTextStyle(fontSize_: fontSizeMaxMinTemp)),
         const VerticalDivider(
           width: 4.0,
           color: Colors.black,
           thickness: 20,
           endIndent: 10,
         ),
-        Text("20 C", style: _defaultTextStyle(fontSize_: 16)),
+        Text("${todayWeather?.tempMin?.celsius}C",
+            style: _defaultTextStyle(fontSize_: fontSizeMaxMinTemp)),
       ],
     );
   }
@@ -221,7 +224,7 @@ class _HomePageState extends State<HomePage> {
         borderRadius: BorderRadius.circular(24.0),
       ),
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             //Icon Future Weather
@@ -234,9 +237,9 @@ class _HomePageState extends State<HomePage> {
               " C",
               style: _defaultTextStyle(fontSize_: 14),
             ),
-            Divider(),
+            const Divider(),
             //Date Future Weather
-            Text("21.01.2004", style: _defaultTextStyle(fontSize_: 14))
+            Text("date", style: _defaultTextStyle(fontSize_: 14))
           ],
         ),
       ),
