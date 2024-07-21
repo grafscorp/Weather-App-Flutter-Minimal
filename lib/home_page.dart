@@ -20,8 +20,8 @@ class _HomePageState extends State<HomePage> {
     getWeatherByCity("Moscow");
   }
 
-  void getWeatherByCity(String city) {
-    _weatherFactory.fiveDayForecastByCityName(city).then((onValue) {
+  void getWeatherByCity(String city) async {
+    await _weatherFactory.fiveDayForecastByCityName(city).then((onValue) {
       setState(() {
         print(onValue);
         fiveDaysWeather = onValue;
@@ -149,7 +149,7 @@ class _HomePageState extends State<HomePage> {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("${todayWeather?.tempMax?.celsius}C",
+        Text("${todayWeather?.tempMax?.celsius?.toStringAsFixed(0)}C",
             style: _defaultTextStyle(fontSize_: fontSizeMaxMinTemp)),
         const VerticalDivider(
           width: 4.0,
@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
           thickness: 20,
           endIndent: 10,
         ),
-        Text("${todayWeather?.tempMin?.celsius}C",
+        Text("${todayWeather?.tempMin?.celsius?.toStringAsFixed(0)}C",
             style: _defaultTextStyle(fontSize_: fontSizeMaxMinTemp)),
       ],
     );
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                   //Value Data
                   Text(
                     "${valueDataWeather} ${unitDataValue}",
-                    style: _defaultTextStyle(fontSize_: 20),
+                    style: _defaultTextStyle(fontSize_: 14),
                   )
                 ],
               )
